@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Appaura - Mobile App Development</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+}
+
+body{
+  background: linear-gradient(135deg,#0f172a,#1e293b,#0f172a);
+  color:#fff;
+  overflow-x:hidden;
+}
+
+/* NAV */
+nav{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:20px 10%;
+  position:sticky;
+  top:0;
+  backdrop-filter: blur(10px);
+  background: rgba(0,0,0,0.3);
+  z-index:100;
+}
+
+nav h2{
+  color:#38bdf8;
+  letter-spacing:1px;
+}
+
+nav a{
+  color:#fff;
+  text-decoration:none;
+  margin-left:20px;
+  font-size:14px;
+  opacity:0.8;
+}
+
+nav a:hover{
+  color:#38bdf8;
+}
+
+/* HERO */
+.hero{
+  text-align:center;
+  padding:120px 20px 80px;
+}
+
+.hero h1{
+  font-size:48px;
+  background: linear-gradient(90deg,#38bdf8,#a78bfa);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  animation: fadeIn 1s ease-in-out;
+}
+
+.hero p{
+  margin-top:15px;
+  font-size:18px;
+  opacity:0.8;
+}
+
+.btn{
+  margin-top:25px;
+  padding:12px 25px;
+  border:none;
+  border-radius:30px;
+  background:#38bdf8;
+  color:#000;
+  cursor:pointer;
+  font-weight:600;
+  transition:0.3s;
+}
+
+.btn:hover{
+  transform:scale(1.05);
+  background:#60a5fa;
+}
+
+/* SECTIONS */
+section{
+  padding:60px 10%;
+}
+
+.card{
+  background: rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.1);
+  padding:25px;
+  border-radius:15px;
+  margin-top:20px;
+  transition:0.3s;
+  backdrop-filter: blur(10px);
+}
+
+.card:hover{
+  transform: translateY(-5px);
+  border-color:#38bdf8;
+}
+
+/* GRID */
+.grid{
+  display:grid;
+  grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+  gap:20px;
+}
+
+/* FOOTER */
+footer{
+  text-align:center;
+  padding:30px;
+  opacity:0.7;
+  border-top:1px solid rgba(255,255,255,0.1);
+}
+
+/* ANIMATION */
+@keyframes fadeIn{
+  from{opacity:0; transform:translateY(20px);}
+  to{opacity:1; transform:translateY(0);}
+}
+
+.fade{
+  opacity:0;
+  transform:translateY(20px);
+  transition:0.6s ease;
+}
+
+.fade.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* MOBILE */
+@media(max-width:768px){
+  .hero h1{font-size:32px;}
+  nav{flex-direction:column;}
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+  <h2>Appaura</h2>
+  <div>
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#privacy">Privacy</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <h1>We Build Powerful Mobile Apps</h1>
+  <p>Android & iOS development • UI/UX design • High performance digital solutions</p>
+  <button class="btn" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
+    Get In Touch
+  </button>
+</div>
+
+<section id="about" class="fade">
+  <h2>About Us</h2>
+  <div class="card">
+    Appaura focuses on developing modern Android and iOS applications with clean UI, high performance, and real-world usability.
+  </div>
+</section>
+
+<section id="services" class="fade">
+  <h2>Our Services</h2>
+  <div class="grid">
+    <div class="card">📱 Android App Development</div>
+    <div class="card">🍏 iOS App Development</div>
+    <div class="card">🎨 UI/UX Design</div>
+    <div class="card">⚡ App Optimization</div>
+    <div class="card">🔗 API Integration</div>
+    <div class="card">🚀 Play Store Publishing</div>
+  </div>
+</section>
+
+<section id="privacy" class="fade">
+  <h2>Privacy Policy</h2>
+  <div class="card">
+    We respect user privacy and ensure secure handling of all data. We do not sell or misuse personal information.
+  </div>
+</section>
+
+<section id="contact" class="fade">
+  <h2>Contact Us</h2>
+  <div class="card">
+    Email: <b>appaurasupport@gmail.com</b>
+  </div>
+</section>
+
+<footer>
+  © 2026 Appaura. All rights reserved.
+</footer>
+
+<script>
+// scroll animation
+const faders = document.querySelectorAll('.fade');
+
+const observer = new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add('show');
+    }
+  });
+});
+
+faders.forEach(el=>observer.observe(el));
+</script>
+
+</body>
+</html>
